@@ -10,32 +10,14 @@ var $$ = Dom7;
 // Register required Template7 helpers, before templates compilation
 Template7.registerHelper('dayOfWeek', function (date) {
     date = new Date(date);
-	// var days = ('Sunday Monday Tuesday Wednesday Thursday Friday Saturday').split(' ');
     var days = ('Вс Пн Вт Ср Чт Пт Сб').split(' ');
     return days[date.getDay()];
 });
 Template7.registerHelper('formatedDated', function (date) {
     date = new Date(date);
-    // var months = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ');
-    var months = 'Янв Фев Мар Апр Мая Июн Июл Авг Сен Окт Ноя Дек'.split(' ');
-    return date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+    var months = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ');
+    return months[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear();
 });
-
-
-
-
-/* Template7.registerHelper('forecastRu', function (date) {
-    date = new Date(date);
-    // var months = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ');
-    var conditionsRu = 'Солнечно%Облачно%Переменная облачность%Пасмурно'.split('%');
-    // return months[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear();
-    return conditionsRu[text];
-}); */
-
-
-
-
-
 // Fickr API Key. CHANGE TO YOUR OWN!!!
 // var flickrAPIKey = '664c33273570a6c80067779f55f548d1';
 // var flickrAPIKey = '4a241b15bac1fd0cc86bdce2f092b81d';
@@ -134,81 +116,14 @@ myApp.updateWeatherData = function (callback) {
     $$.get(q, function (data) {
         var weatherData = [];
         myApp.hideIndicator();
-		console.log(data);
-		
-		// http://meteoinfo.ru/forecasts/forcterminology
-		// data.replace(/Mostly Cloudy/g, "Переменная облачность");
-		// data.replace(/Partly Cloudy/g, "Облачно с прояснениями");
-		// data.replace(/Mostly Sunny/g, "Малооблачно");
-		// data.replace(/Sunny/g, "Солнечно");
-		// data.replace(/Cloudy/g, "1111111111111111111111111111111111111111111111111111111111111111111111111111111");
-		// alert( data.replace(/Mostly Cloudy/i, "11111") );
-		// alert( data.search( /Mostly Cloudy/i ) ); // 0
-		console.log(data);
-		data = data.replace(/Mostly Cloudy/g, "Облачно с прояснениями");
-		data = data.replace(/Partly Cloudy/g, "Малооблачно");
-		
-/* 		<yahoo-weather-codes>
-  <code number="0" description="tornado"/>
-  <code number="1" description="tropical storm"/>
-  <code number="2" description="hurricane"/>
-  <code number="3" description="severe thunderstorms"/>
-  <code number="4" description="thunderstorms"/>
-  <code number="5" description="mixed rain and snow"/>
-  <code number="6" description="mixed rain and sleet"/>
-  <code number="7" description="mixed snow and sleet"/>
-  <code number="8" description="freezing drizzle"/>
-  <code number="9" description="drizzle"/>
-  <code number="10" description="freezing rain"/>
-  <code number="11" description="showers"/>
-  <code number="12" description="showers"/>
-  <code number="13" description="snow flurries"/>
-  <code number="14" description="light snow showers"/>
-  <code number="15" description="blowing snow"/>
-  <code number="16" description="snow"/>
-  <code number="17" description="hail"/>
-  <code number="18" description="sleet"/>
-  <code number="19" description="dust"/>
-  <code number="20" description="foggy"/>
-  <code number="21" description="haze"/>
-  <code number="22" description="smoky"/>
-  <code number="23" description="blustery"/>
-  <code number="24" description="windy"/>
-  <code number="25" description="cold"/>
-  <code number="26" description="cloudy"/>
-  <code number="27" description="mostly cloudy (night)"/>
-  <code number="28" description="mostly cloudy (day)"/>
-  <code number="29" description="partly cloudy (night)"/>
-  <code number="30" description="partly cloudy (day)"/>
-  <code number="31" description="clear (night)"/>
-  <code number="32" description="sunny"/>
-  <code number="33" description="fair (night)"/>
-  <code number="34" description="fair (day)"/>
-  <code number="35" description="mixed rain and hail"/>
-  <code number="36" description="hot"/>
-  <code number="37" description="isolated thunderstorms"/>
-  <code number="38" description="scattered thunderstorms"/>
-  <code number="39" description="scattered thunderstorms"/>
-  <code number="40" description="scattered showers"/>
-  <code number="41" description="heavy snow"/>
-  <code number="42" description="scattered snow showers"/>
-  <code number="43" description="heavy snow"/>
-  <code number="44" description="partly cloudy"/>
-  <code number="45" description="thundershowers"/>
-  <code number="46" description="snow showers"/>
-  <code number="47" description="isolated thundershowers"/>
-  <code number="3200" description="not available"/>
-</yahoo-weather-codes> */
-		
         data = JSON.parse(data);
+		console.log
         if (!data.query || !data.query.results) return;
         var places = data.query.results.channel;
         var place;
-		
         if ($$.isArray(places)) {
             for (var i = 0; i < places.length; i++) {
                 place = places[i];
-				// place.item.forecast.forEach(function(item, i) { if (item == 'Partly Cloudy') a[i] = 'Переменная облачность'; });
                 weatherData.push({
                     city: place.location.city,
                     country: place.location.country,
