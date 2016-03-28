@@ -4,6 +4,7 @@ var myApp = new Framework7({
     material: true,
     materialPageLoadDelay: 200
 });
+
 // Export selectors engine
 var $$ = Dom7;
 
@@ -21,8 +22,16 @@ Template7.registerHelper('formatedDated', function (date) {
     return date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
 });
 
-
-
+// Back Button! Call onDeviceReady when PhoneGap is loaded. At this point, the document has loaded but phonegap-1.0.0.js has not. When PhoneGap is loaded and talking with the native device, it will call the event deviceready.
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() { // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+	document.addEventListener("backbutton", onBackKeyDown, false); // Register the event listener backButton
+	initPushwoosh();
+}
+function onBackKeyDown() { // Handle the back button
+	if(mainView.activePage.name == "index"){ navigator.app.exitApp(); }
+	else { mainView.router.back(); }
+}
 
 // Fickr API Key. CHANGE TO YOUR OWN!!!
 // var flickrAPIKey = '664c33273570a6c80067779f55f548d1';
@@ -126,6 +135,7 @@ myApp.updateWeatherData = function (callback) {
 		console.log(data);
 		
 		// http://meteoinfo.ru/forecasts/forcterminology
+		// translate response to Russian
 		console.log(data);
 		data = data.replace(/light snow showers/gi, "Снег, метель");
 		data = data.replace(/mixed rain and snow/gi, "Смешанный дождь и снег");
