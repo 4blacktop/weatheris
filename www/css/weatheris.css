@@ -100,7 +100,8 @@ body {
   background-position: center;
   position: relative;
   color: #fff;
-  overflow: hidden;
+  /* disable header picture for <720px witdh screens */
+  /* overflow: hidden; */
 }
 .detail-page-header .detail-page-header-overlay {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0) 50%);
