@@ -24,18 +24,6 @@ Template7.registerHelper('formatedDated', function (date) {
 
 
 
-/* Template7.registerHelper('forecastRu', function (date) {
-    date = new Date(date);
-    // var months = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ');
-    var conditionsRu = 'Солнечно%Облачно%Переменная облачность%Пасмурно'.split('%');
-    // return months[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear();
-    return conditionsRu[text];
-}); */
-
-
-
-
-
 // Fickr API Key. CHANGE TO YOUR OWN!!!
 // var flickrAPIKey = '664c33273570a6c80067779f55f548d1';
 // var flickrAPIKey = '4a241b15bac1fd0cc86bdce2f092b81d';
@@ -123,7 +111,8 @@ myApp.updateWeatherData = function (callback) {
         return;
     }
     if (!navigator.onLine) {
-        myApp.alert('You need internet connection to update weather data');
+        // myApp.alert('You need internet connection to update weather data');
+        myApp.alert('Для обновления данных необходимо подключение к Интернет');
     }
     for (var i = 0; i < places.length; i++) {
         woeids.push(places[i].woeid);
@@ -138,24 +127,34 @@ myApp.updateWeatherData = function (callback) {
 		
 		// http://meteoinfo.ru/forecasts/forcterminology
 		console.log(data);
-		data = data.replace(/Mostly clear/gi, "В основном ясно");
-		data = data.replace(/Mostly Cloudy/gi, "Облачно с прояснениями");
-		data = data.replace(/Partly Cloudy/gi, "Малооблачно");
-		data = data.replace(/tornado/gi, "Торнадо");
-		data = data.replace(/tropical storm/gi, "Тропическая буря");
-		data = data.replace(/hurricane/gi, "Ураган");
-		data = data.replace(/severe thunderstorms/gi, "Сильные грозы");
-		data = data.replace(/thunderstorms/gi, "Грозы");
+		data = data.replace(/light snow showers/gi, "Снег, метель");
 		data = data.replace(/mixed rain and snow/gi, "Смешанный дождь и снег");
 		data = data.replace(/mixed rain and sleet/gi, "Смешанный дождь и мокрый снег");
 		data = data.replace(/mixed snow and sleet/gi, "Смешанный снег и мокрый снег");
-		data = data.replace(/freezing drizzle/gi, "Изморозь");
-		data = data.replace(/drizzle/gi, "Изморозь");
-		data = data.replace(/freezing rain/gi, "Ледяной дождь");
-		data = data.replace(/showers/gi, "Ливни");
-		data = data.replace(/snow flurries/gi, "Снег, пурга");
-		data = data.replace(/light snow showers/gi, "Снег, метель");
+		data = data.replace(/mixed rain and hail/gi, "Дождь с градом");
+		data = data.replace(/Mostly clear/gi, "В основном ясно");
+		data = data.replace(/Mostly sunny/gi, "В основном солнечно");
+		data = data.replace(/Mostly Cloudy/gi, "Облачно с прояснениями");
+		data = data.replace(/Partly Cloudy/gi, "Малооблачно");
+		data = data.replace(/tropical storm/gi, "Тропическая буря");
 		data = data.replace(/blowing snow/gi, "Низовая метель");
+		data = data.replace(/severe thunderstorms/gi, "Сильные грозы");
+		data = data.replace(/thunderstorms/gi, "Грозы");
+		data = data.replace(/isolated thunderstorms/gi, "В отдельных районах грозы");
+		data = data.replace(/scattered thunderstorms/gi, "Местами грозы");
+		data = data.replace(/scattered snow showers/gi, "В отдельных районах снегопад");
+		data = data.replace(/isolated thundershowers/gi, "В отдельных районах ливневой снег");
+		data = data.replace(/scattered showers/gi, "Местами ливни");
+		data = data.replace(/snow flurries/gi, "Снег, пурга");
+		data = data.replace(/freezing drizzle/gi, "Изморозь");
+		data = data.replace(/freezing rain/gi, "Ледяной дождь");
+		data = data.replace(/heavy snow/gi, "Снегопад");
+		data = data.replace(/heavy snow/gi, "Сильный снег");
+		data = data.replace(/snow showers/gi, "Ливневой снег");
+		data = data.replace(/drizzle/gi, "Изморозь");
+		data = data.replace(/tornado/gi, "Торнадо");
+		data = data.replace(/hurricane/gi, "Ураган");
+		data = data.replace(/showers/gi, "Ливни");
 		data = data.replace(/snow/gi, "Снег");
 		data = data.replace(/hail/gi, "Град");
 		data = data.replace(/sleet/gi, "Дождь со снегом");
@@ -168,22 +167,12 @@ myApp.updateWeatherData = function (callback) {
 		data = data.replace(/clear/gi, "Ясно");
 		data = data.replace(/sunny/gi, "Солнечно");
 		data = data.replace(/fair/gi, "Солнечно");
-		data = data.replace(/mixed rain and hail/gi, "Дождь с градом");
 		data = data.replace(/hot/gi, "Жарко");
-		data = data.replace(/isolated thunderstorms/gi, "В отдельных районах грозы");
-		data = data.replace(/scattered thunderstorms/gi, "Местами грозы");
-		data = data.replace(/scattered showers/gi, "Местами ливни");
-		data = data.replace(/heavy snow/gi, "Снегопад");
-		data = data.replace(/scattered snow showers/gi, "В отдельных районах снегопад");
-		data = data.replace(/heavy snow/gi, "Сильный снег");
 		data = data.replace(/thundershowers/gi, "Ливни с грозами");
-		data = data.replace(/snow showers/gi, "Ливневой снег");
-		data = data.replace(/isolated thundershowers/gi, "В отдельных районах ливневой снег");
 		data = data.replace(/Breezy/gi, "Свежо");
+		data = data.replace(/Scattered/gi, "Местами");
 		data = data.replace(/not available/gi, "Нет информации");
 		
-
-	
         data = JSON.parse(data);
         if (!data.query || !data.query.results) return;
         var places = data.query.results.channel;
@@ -192,7 +181,6 @@ myApp.updateWeatherData = function (callback) {
         if ($$.isArray(places)) {
             for (var i = 0; i < places.length; i++) {
                 place = places[i];
-				// place.item.forecast.forEach(function(item, i) { if (item == 'Partly Cloudy') a[i] = 'Переменная облачность'; });
                 weatherData.push({
                     city: place.location.city,
                     country: place.location.country,
@@ -326,7 +314,8 @@ window.addEventListener('load', function (e) {
     window.applicationCache.addEventListener('updateready', function (e) {
         if (window.applicationCache.status === window.applicationCache.UPDATEREADY) {
             // Browser downloaded a new app cache.
-            myApp.confirm('A new version of weather7 is available. Do you want to load it right now?', function () {
+            // myApp.confirm('A new version of weatheris is available. Do you want to load it right now?', function () {
+            myApp.confirm('Для приложения Weatheris доступна новая версия. Хотите установить обновление сейчас?', function () {
                 window.location.reload();
             });
         } else {
