@@ -138,52 +138,109 @@ myApp.updateWeatherData = function (callback) {
 		
 		// http://meteoinfo.ru/forecasts/forcterminology
 		console.log(data);
-		data = data.replace(/Mostly clear/gi, "В основном ясно");
-		data = data.replace(/Mostly Cloudy/gi, "Облачно с прояснениями");
-		data = data.replace(/Partly Cloudy/gi, "Малооблачно");
-		data = data.replace(/tornado/gi, "Торнадо");
-		data = data.replace(/tropical storm/gi, "Тропическая буря");
-		data = data.replace(/hurricane/gi, "Ураган");
-		data = data.replace(/severe thunderstorms/gi, "Сильные грозы");
-		data = data.replace(/thunderstorms/gi, "Грозы");
-		data = data.replace(/mixed rain and snow/gi, "Смешанный дождь и снег");
-		data = data.replace(/mixed rain and sleet/gi, "Смешанный дождь и мокрый снег");
-		data = data.replace(/mixed snow and sleet/gi, "Смешанный снег и мокрый снег");
-		data = data.replace(/freezing drizzle/gi, "Изморозь");
-		data = data.replace(/drizzle/gi, "Изморозь");
-		data = data.replace(/freezing rain/gi, "Ледяной дождь");
-		data = data.replace(/showers/gi, "Ливни");
-		data = data.replace(/snow flurries/gi, "Снег, пурга");
-		data = data.replace(/light snow showers/gi, "Снег, метель");
-		data = data.replace(/blowing snow/gi, "Низовая метель");
-		data = data.replace(/snow/gi, "Снег");
-		data = data.replace(/hail/gi, "Град");
-		data = data.replace(/sleet/gi, "Дождь со снегом");
-		data = data.replace(/dust/gi, "Пыль");
-		data = data.replace(/foggy/gi, "Туман");
-		data = data.replace(/haze/gi, "Мгла");
-		data = data.replace(/smoky/gi, "Дымка");
-		data = data.replace(/cold/gi, "Морозно");
-		data = data.replace(/cloudy/gi, "В основном облачно");
-		data = data.replace(/clear/gi, "Ясно");
-		data = data.replace(/sunny/gi, "Солнечно");
-		data = data.replace(/fair/gi, "Солнечно");
-		data = data.replace(/mixed rain and hail/gi, "Дождь с градом");
-		data = data.replace(/hot/gi, "Жарко");
-		data = data.replace(/isolated thunderstorms/gi, "В отдельных районах грозы");
-		data = data.replace(/scattered thunderstorms/gi, "Местами грозы");
-		data = data.replace(/scattered showers/gi, "Местами ливни");
-		data = data.replace(/heavy snow/gi, "Снегопад");
-		data = data.replace(/scattered snow showers/gi, "В отдельных районах снегопад");
-		data = data.replace(/heavy snow/gi, "Сильный снег");
-		data = data.replace(/thundershowers/gi, "Ливни с грозами");
-		data = data.replace(/snow showers/gi, "Ливневой снег");
-		data = data.replace(/isolated thundershowers/gi, "В отдельных районах ливневой снег");
-		data = data.replace(/Breezy/gi, "Свежо");
-		data = data.replace(/not available/gi, "Нет информации");
+		data = data.replace(/Mostly Cloudy/g, "Облачно с прояснениями");
+		data = data.replace(/Partly Cloudy/g, "Малооблачно");
+		
+		
+/* 		
+  <yahoo-weather-codes>
+  <code number="0" description="tornado"/>
+  <code number="1" description="tropical storm"/>
+  <code number="2" description="hurricane"/>
+  <code number="3" description="severe thunderstorms"/>
+  <code number="4" description="thunderstorms"/>
+  <code number="5" description="mixed rain and snow"/>
+  <code number="6" description="mixed rain and sleet"/>
+  <code number="7" description="mixed snow and sleet"/>
+  <code number="8" description="freezing drizzle"/>
+  <code number="9" description="drizzle"/>
+  <code number="10" description="freezing rain"/>
+  <code number="11" description="showers"/>
+  <code number="12" description="showers"/>
+  <code number="13" description="snow flurries"/>
+  <code number="14" description="light snow showers"/>
+  <code number="15" description="blowing snow"/>
+  <code number="16" description="snow"/>
+  <code number="17" description="hail"/>
+  <code number="18" description="sleet"/>
+  <code number="19" description="dust"/>
+  <code number="20" description="foggy"/>
+  <code number="21" description="haze"/>
+  <code number="22" description="smoky"/>
+  <code number="23" description="blustery"/>
+  <code number="24" description="windy"/>
+  <code number="25" description="cold"/>
+  <code number="26" description="cloudy"/>
+  <code number="27" description="mostly cloudy (night)"/>
+  <code number="28" description="mostly cloudy (day)"/>
+  <code number="29" description="partly cloudy (night)"/>
+  <code number="30" description="partly cloudy (day)"/>
+  <code number="31" description="clear (night)"/>
+  <code number="32" description="sunny"/>
+  <code number="33" description="fair (night)"/>
+  <code number="34" description="fair (day)"/>
+  <code number="35" description="mixed rain and hail"/>
+  <code number="36" description="hot"/>
+  <code number="37" description="isolated thunderstorms"/>
+  <code number="38" description="scattered thunderstorms"/>
+  <code number="39" description="scattered thunderstorms"/>
+  <code number="40" description="scattered showers"/>
+  <code number="41" description="heavy snow"/>
+  <code number="42" description="scattered snow showers"/>
+  <code number="43" description="heavy snow"/>
+  <code number="44" description="partly cloudy"/>
+  <code number="45" description="thundershowers"/>
+  <code number="46" description="snow showers"/>
+  <code number="47" description="isolated thundershowers"/>
+  <code number="3200" description="not available"/>
+</yahoo-weather-codes> */
+		
+		
+		
+		
+		
+		
+		data = data.replace(/tornado/g, "Малооблачно");
+		data = data.replace(/tropical storm/g, "Малооблачно");
+		data = data.replace(/hurricane/g, "Малооблачно");
+		data = data.replace(/severe thunderstorms/g, "Малооблачно");
+		data = data.replace(/thunderstorms/g, "Малооблачно");
+		data = data.replace(/mixed rain and snow/g, "Малооблачно");
+		data = data.replace(/mixed rain and sleet/g, "Малооблачно");
+		data = data.replace(/mixed snow and sleet/g, "Малооблачно");
+		data = data.replace(/freezing drizzle/g, "Малооблачно");
+		data = data.replace(/freezing rain/g, "Малооблачно");
+		data = data.replace(/showers/g, "Малооблачно");
+		data = data.replace(/snow flurries/g, "Малооблачно");
+		data = data.replace(/light snow showers/g, "Малооблачно");
+		data = data.replace(/blowing snow/g, "Малооблачно");
+		data = data.replace(/snow/g, "Малооблачно");
+		data = data.replace(/hail/g, "Малооблачно");
+		data = data.replace(/sleet/g, "Малооблачно");
+		data = data.replace(/dust/g, "Малооблачно");
+		data = data.replace(/foggy/g, "Малооблачно");
+		data = data.replace(/haze/g, "Малооблачно");
+		data = data.replace(/smoky/g, "Малооблачно");
+		data = data.replace(/cold/g, "Малооблачно");
+		data = data.replace(/cloudy/g, "Малооблачно");
+		data = data.replace(/clear/g, "Малооблачно");
+		data = data.replace(/sunny/g, "Малооблачно");
+		data = data.replace(/fair/g, "Малооблачно");
+		data = data.replace(/mixed rain and hail/g, "Малооблачно");
+		data = data.replace(/hot/g, "Малооблачно");
+		data = data.replace(/isolated thunderstorms/g, "Малооблачно");
+		data = data.replace(/scattered thunderstorms/g, "Малооблачно");
+		data = data.replace(/scattered showers/g, "Малооблачно");
+		data = data.replace(/heavy snow/g, "Малооблачно");
+		data = data.replace(/scattered snow showers/g, "Малооблачно");
+		data = data.replace(/heavy snow/g, "Малооблачно");
+		data = data.replace(/thundershowers/g, "Малооблачно");
+		data = data.replace(/snow showers/g, "Малооблачно");
+		data = data.replace(/isolated thundershowers/g, "Малооблачно");
+		data = data.replace(/not available/g, "Нет информации");
 		
 
-	
+		
         data = JSON.parse(data);
         if (!data.query || !data.query.results) return;
         var places = data.query.results.channel;
@@ -302,10 +359,7 @@ myApp.onPageAfterAnimation('detail', function (page) {
     }
     else {
         // var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and woe_id="'+woeid+'" and api_key="92bd0de55a63046155c09f1a06876875"');
-        // var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
-        // var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and tags="girl" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
-        // var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and tags="street" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
-        var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and tags="girl,street" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
+        var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
         var q = 'https://query.yahooapis.com/v1/public/yql?q=' + query + '&format=json';
         photoXHR = $$.get(q, function (res) {
             if (res) {
