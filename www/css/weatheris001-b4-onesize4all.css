@@ -92,19 +92,15 @@ body {
 ==============================*/
 .detail-page-header {
   background: #222;
-  
-  /* height: -webkit-calc(100vw / 4 * 3);
-  height: calc(100vw / 4 * 3); */
-  height: 50%;
-  
-  /* max-height: -webkit-calc(100vh - 56px);
-  max-height: calc(100vh - 56px); */
-  
-  max-height: 50%;
+  height: -webkit-calc(100vw / 4 * 3);
+  height: calc(100vw / 4 * 3);
+  max-height: -webkit-calc(100vh - 56px);
+  max-height: calc(100vh - 56px);
   background-size: cover;
   background-position: center;
   position: relative;
   color: #fff;
+  /* disable header picture for <720px witdh screens */
   overflow: hidden;
 }
 .detail-page-header .detail-page-header-overlay {
@@ -180,7 +176,8 @@ body {
 /*==============================
     Tablet
 ==============================*/
-@media (min-width: 720px) {
+/* @media (min-width: 720px) { */
+@media (min-width: 500px) {
   .views .page {
     background: #eee;
   }
