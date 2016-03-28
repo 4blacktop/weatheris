@@ -26,7 +26,6 @@ Template7.registerHelper('formatedDated', function (date) {
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() { // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
 	document.addEventListener("backbutton", onBackKeyDown, false); // Register the event listener backButton
-	initPushwoosh();
 }
 function onBackKeyDown() { // Handle the back button
 	if(mainView.activePage.name == "index"){ navigator.app.exitApp(); }
@@ -132,11 +131,11 @@ myApp.updateWeatherData = function (callback) {
     $$.get(q, function (data) {
         var weatherData = [];
         myApp.hideIndicator();
-		console.log(data);
+		// console.log(data);
 		
 		// http://meteoinfo.ru/forecasts/forcterminology
 		// translate response to Russian
-		console.log(data);
+		// console.log(data);
 		data = data.replace(/light snow showers/gi, "Снег, метель");
 		data = data.replace(/mixed rain and snow/gi, "Смешанный дождь и снег");
 		data = data.replace(/mixed rain and sleet/gi, "Смешанный дождь и мокрый снег");
@@ -283,13 +282,17 @@ $$('.places-list').on('click', 'a.item-link', function (e) {
 var photoXHR;
 var photoCache = {};
 myApp.onPageAfterAnimation('detail', function (page) {
+	$$('.detail-page-header').css('background-image', 'url(https://farm9.staticflickr.com/8585/16489978417_a592a6e0e1_c.jpg)');
+	
     var woeid = $$(page.container).attr('data-woeid');
     var weatherData = JSON.parse(localStorage.w7Data);
     for (var i = 0; i < weatherData.length; i++) {
         if (weatherData[i].woeid === woeid) item = weatherData[i];
     }
+	
 
     function placePhotos(photos) {
+	// $$('.detail-page-header').css('background-image', 'url(https://farm9.staticflickr.com/8585/16489978417_a592a6e0e1_c.jpg)');
         if (photos && photos.query && photos.query.count > 0)  {
             var photo = photos.query.results.photo[Math.floor(Math.random() * photos.query.count)];
             $$('.detail-page-header').css('background-image', 'url(https://farm'+photo.farm+'.staticflickr.com/'+photo.server+'/'+photo.id+'_'+photo.secret+'_c.jpg)');
@@ -303,6 +306,8 @@ myApp.onPageAfterAnimation('detail', function (page) {
         // var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
         // var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and tags="girl" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
         // var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and tags="street" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
+		
+		// https://www.flickr.com/services/api/flickr.photos.search.html
         var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and tags="girl,street" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
         var q = 'https://query.yahooapis.com/v1/public/yql?q=' + query + '&format=json';
         photoXHR = $$.get(q, function (res) {
