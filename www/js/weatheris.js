@@ -282,7 +282,8 @@ $$('.places-list').on('click', 'a.item-link', function (e) {
 var photoXHR;
 var photoCache = {};
 myApp.onPageAfterAnimation('detail', function (page) {
-	$$('.detail-page-header').css('background-image', 'url(https://farm9.staticflickr.com/8585/16489978417_a592a6e0e1_c.jpg)');
+	// $$('.detail-page-header').css('background-image', 'url(https://farm9.staticflickr.com/8585/16489978417_a592a6e0e1_c.jpg)');
+	$$('.detail-page-header').css('background-image', 'url(details.png)');
 	
     var woeid = $$(page.container).attr('data-woeid');
     var weatherData = JSON.parse(localStorage.w7Data);
