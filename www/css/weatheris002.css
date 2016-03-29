@@ -73,6 +73,7 @@ body {
 .places-list .item-link .item-inner {
   background: none;
   padding-right: 16px;
+  height: 24px;
 }
 
 
@@ -206,7 +207,7 @@ body {
   text-align: right;
   color: rgba(0, 0, 0, 0.87);
   /*width: 320px;  160328 1845 */
-  /*width: 50%;  160329 1420 */
+  width: 50%; /* 160329 1420 */
   height: auto;
   max-height: none;
   float: right;/* 160328 1859 */
