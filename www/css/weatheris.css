@@ -11,47 +11,10 @@ body {
   margin: 0;
 }
 
-/* .places-list span {
-  display: inline-block;
-} */
-/* .list-block .item-inner {
-  padding-right: 16px;
-  position: relative;
-  width: 100%;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  min-height: 48px;
-  box-sizing: border-box;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  min-width: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -ms-flex-item-align: stretch;
-  -webkit-align-self: stretch;
-  align-self: stretch;
-} */
-
-
 .places-list .item-after {
   font-size: 24px;
   max-height: none;
   color: rgba(0, 0, 0, 0.54);
-  /*float: right;
-  text-align: right;
-  width: 90%;  160329 1420 
-   margin-left: 70%;
-	margin-right: 20%;*/
 }
 
 .places-list .city {
@@ -74,9 +37,6 @@ body {
   background: none;
   padding-right: 16px;
 }
-
-
-
 
 .places-list .icon-delete {
   width: 24px;
@@ -197,7 +157,6 @@ body {
   display: inline-block;
 }
 .list-block.forecast-list .item-inner {
-  /*width: 30%; 160329 1420 */
   padding-top: 16px;
   padding-bottom: 16px;
 }
@@ -205,8 +164,6 @@ body {
   display: block;
   text-align: right;
   color: rgba(0, 0, 0, 0.87);
-  /*width: 320px;  160328 1845 */
-  /*width: 50%;  160329 1420 */
   height: auto;
   max-height: none;
   float: right;/* 160328 1859 */
@@ -241,7 +198,6 @@ body {
   }
   .views .navbar .center {
     display: block;
-	/* max-width: 1500px; 160329 1450 */
     max-width: -webkit-calc(100% - 80% - 56px - 16px);
     max-width: -calc(100% - 80% - 56px - 16px);
   }
