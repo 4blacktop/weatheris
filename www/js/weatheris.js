@@ -141,6 +141,7 @@ myApp.updateWeatherData = function (callback) {
 		data = data.replace(/mixed rain and sleet/gi, "Смешанный дождь и мокрый снег");
 		data = data.replace(/mixed snow and sleet/gi, "Смешанный снег и мокрый снег");
 		data = data.replace(/mixed rain and hail/gi, "Дождь с градом");
+		data = data.replace(/rain and snow/gi, "Дождь и снег");
 		data = data.replace(/Mostly clear/gi, "В основном ясно");
 		data = data.replace(/Mostly sunny/gi, "В основном солнечно");
 		data = data.replace(/Mostly Cloudy/gi, "Облачно с прояснениями");
