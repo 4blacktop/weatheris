@@ -28,12 +28,14 @@ function onDeviceReady() { // PhoneGap is loaded and it is now safe to make call
 	document.addEventListener("backbutton", onBackKeyDown, false); // Register the event listener backButton
 }
 function onBackKeyDown() { // Handle the back button
-	if(mainView.activePage.name == "index"){ navigator.app.exitApp(); 
-	myApp.alert('Страница index.');
+	if(mainView.activePage.name == "index"){
+		myApp.alert('Страница index.');
+		navigator.app.exitApp(); 
 	}
 	else { 
-	myApp.alert('Страница не index.');
-	mainView.router.back(); }
+		myApp.alert('Страница не index.');
+		mainView.router.back(); 
+	}
 }
 
 // Fickr API Key. CHANGE TO YOUR OWN!!!
