@@ -343,7 +343,8 @@ myApp.onPageAfterAnimation('detail', function (page) {
         // var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and tags="street" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
 		
 		// https://www.flickr.com/services/api/flickr.photos.search.html
-        var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and tags="girl,street" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
+        // var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and tags="girl,street" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
+        var query = encodeURIComponent('select * from flickr.photos.search where has_geo="true" and tags="street" and woe_id="'+woeid+'" and api_key="feb753a0cad44ff8b04c214a04fc1d69"');
         var q = 'https://query.yahooapis.com/v1/public/yql?q=' + query + '&format=json';
         photoXHR = $$.get(q, function (res) {
             if (res) {
