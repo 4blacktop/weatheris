@@ -1,14 +1,35 @@
-// Initialize your app
+// Initialize your app. Инициализируем приложение
 var myApp = new Framework7({
     modalTitle: 'Weatheris',
     material: true,
     materialPageLoadDelay: 200
 });
 
-// Export selectors engine
+// Export selectors engine. Экспорт селекторов движка
 var $$ = Dom7;
 
-// Ajax setting for timeout
+// Back Button! Call onDeviceReady when PhoneGap is loaded. At this point, the document has loaded but phonegap-1.0.0.js has not. When PhoneGap is loaded and talking with the native device, it will call the event deviceready. 
+// Вызов onDeviceReady когда будет загружен PhoneGap. В этот момент, документ уже загружен, но phonegap-1.0.0.js еще нет. Когда PhoneGap загрузится и соединится с нативным устройством, он вызовет событие deviceready.
+function onLoad() {
+	document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+// PhoneGap is loaded and it is now safe to make calls PhoneGap methods. PhoneGap загружен, и сейчас можно вызывать его методы.
+function onDeviceReady() { 
+	document.addEventListener("backbutton", onBackKeyDown, false); // Register the event listener backButton. Регистрируем обработчик события backButton
+}
+function onBackKeyDown() { // Handle the back button. Обработка кнопки "Назад"
+	myApp.alert('Кнопка назад.');
+	if(mainView.activePage.name == "index"){
+		myApp.alert('Страница index.');
+		navigator.app.exitApp(); 
+	}
+	else { 
+		mainView.router.back(); 
+	}
+}
+
+// Ajax setting for timeout. Настройки таймаута Ajax и предупреждения об ошибке
 $$.ajaxSetup({
 	cache: false,
 	// crossDomain: true, // don't know if it's working for CORS properly, on localhost - CORS failed during ajax form submit, regular submit ok
@@ -22,11 +43,12 @@ $$.ajaxSetup({
 	}
 });
 
-// Register required Template7 helpers, before templates compilation
+// Register required Template7 helpers, before templates compilation. Регистрируем хелперы, обязательно перед компиляцией шаблонов
 Template7.registerHelper('dayOfWeek', function (date) {
     date = new Date(date);
 	// var days = ('Sunday Monday Tuesday Wednesday Thursday Friday Saturday').split(' ');
-    var days = ('Вс Пн Вт Ср Чт Пт Сб').split(' ');
+    // var days = ('Вс Пн Вт Ср Чт Пт Сб').split(' ');
+    var days = ('Воскресенье Понедельник Вторник Среда Четверг Пятница Суббота').split(' ');
     return days[date.getDay()];
 });
 Template7.registerHelper('formatedDated', function (date) {
@@ -36,21 +58,11 @@ Template7.registerHelper('formatedDated', function (date) {
     return date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
 });
 
-// Back Button! Call onDeviceReady when PhoneGap is loaded. At this point, the document has loaded but phonegap-1.0.0.js has not. When PhoneGap is loaded and talking with the native device, it will call the event deviceready. 
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() { // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
-	document.addEventListener("backbutton", onBackKeyDown, false); // Register the event listener backButton
-}
-function onBackKeyDown() { // Handle the back button
-	if(mainView.activePage.name == "index"){
-		myApp.alert('Страница index.');
-		navigator.app.exitApp(); 
-	}
-	else { 
-		myApp.alert('Страница не index.');
-		mainView.router.back(); 
-	}
-}
+
+
+
+
+
 
 // Fickr API Key. CHANGE TO YOUR OWN!!!
 // var flickrAPIKey = '664c33273570a6c80067779f55f548d1';
@@ -345,19 +357,19 @@ myApp.onPageBack('detail', function (page) {
     if (photoXHR) photoXHR.abort();
 });
 
-// Update app when manifest updated 
+// Update app when manifest updated Обновить приложение когда обновится манифест
 // http://www.html5rocks.com/en/tutorials/appcache/beginner/
 // Check if a new cache is available on page load.
 window.addEventListener('load', function (e) {
     window.applicationCache.addEventListener('updateready', function (e) {
         if (window.applicationCache.status === window.applicationCache.UPDATEREADY) {
-            // Browser downloaded a new app cache.
+            // Browser downloaded a new app cache. Браузер скачал новый кэш приложения
             // myApp.confirm('A new version of weatheris is available. Do you want to load it right now?', function () {
             myApp.confirm('Для приложения Weatheris доступна новая версия. Хотите установить обновление сейчас?', function () {
                 window.location.reload();
             });
         } else {
-            // Manifest didn't changed. Nothing new to server.
+            // Manifest didn't changed. Nothing new to server. Манифест не обновлен.
         }
     }, false);
 }, false);
