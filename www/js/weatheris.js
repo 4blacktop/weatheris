@@ -8,6 +8,20 @@ var myApp = new Framework7({
 // Export selectors engine
 var $$ = Dom7;
 
+// Ajax setting for timeout
+$$.ajaxSetup({
+	cache: false,
+	// crossDomain: true, // don't know if it's working for CORS properly, on localhost - CORS failed during ajax form submit, regular submit ok
+	timeout: 9000, // 9 seconds, same as timeout in  ptrContent.on setTimeout
+	error: function(xhr) {
+	myApp.hideProgressbar();
+	var status = xhr.status;
+	myApp.alert( "Проверьте подключение к Интернету" , 'Ошибка сети', function () {
+		$$(".back").click();
+		});
+	}
+});
+
 // Register required Template7 helpers, before templates compilation
 Template7.registerHelper('dayOfWeek', function (date) {
     date = new Date(date);
