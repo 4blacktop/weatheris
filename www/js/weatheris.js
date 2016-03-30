@@ -159,10 +159,10 @@ myApp.updateWeatherData = function (callback) {
     }
     var query = encodeURIComponent('select * from weather.forecast where woeid in (' + JSON.stringify(woeids).replace('[', '').replace(']', '') + ') and u="c"');
     var q = 'http://query.yahooapis.com/v1/public/yql?q=' + query + '&format=json';
-    myApp.showIndicator();
+    // myApp.showIndicator();
     $$.get(q, function (data) {
         var weatherData = [];
-        myApp.hideIndicator();
+        // myApp.hideIndicator();
 		// console.log(data);
 		
 		// http://meteoinfo.ru/forecasts/forcterminology
