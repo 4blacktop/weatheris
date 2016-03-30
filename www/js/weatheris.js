@@ -31,15 +31,15 @@ function onBackKeyDown() { // Handle the back button. Обработка кно�
 
 // Ajax setting for timeout. Настройки таймаута Ajax и предупреждения об ошибке
 $$.ajaxSetup({
-	cache: false,
+	// cache: false,
 	// crossDomain: true, // don't know if it's working for CORS properly, on localhost - CORS failed during ajax form submit, regular submit ok
 	timeout: 9000, // 9 seconds, same as timeout in  ptrContent.on setTimeout
 	error: function(xhr) {
-	myApp.hideProgressbar();
-	var status = xhr.status;
-	myApp.alert( "Проверьте подключение к Интернету" , 'Ошибка сети', function () {
-		$$(".back").click();
-		});
+	// myApp.hideProgressbar();
+	// var status = xhr.status;
+	// myApp.alert( "Проверьте подключение к Интернету" , 'Ошибка сети', function () {
+		// $$(".back").click();
+		// });
 	}
 });
 
@@ -88,7 +88,7 @@ myApp.searchLocation = function (search) {
     var query = encodeURIComponent('select * from geo.places where text="' + search + '"');
     var q = 'http://query.yahooapis.com/v1/public/yql?q=' + query + '&format=json';
     if (searchTimeout) clearTimeout(searchTimeout);
-    $$('.popup .preloader').show();
+    // $$('.popup .preloader').show();
     searchTimeout = setTimeout(function () {
         $$.get(q, function (results) {
             var html = '';
