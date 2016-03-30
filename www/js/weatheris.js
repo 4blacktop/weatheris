@@ -184,6 +184,7 @@ myApp.updateWeatherData = function (callback) {
 		data = data.replace(/sunny/gi, "Солнечно");
 		data = data.replace(/fair/gi, "Солнечно");
 		data = data.replace(/hot/gi, "Жарко");
+		data = data.replace(/rain/gi, "Дождь");
 		data = data.replace(/thundershowers/gi, "Ливни с грозами");
 		data = data.replace(/Breezy/gi, "Свежо");
 		data = data.replace(/Scattered/gi, "Местами");

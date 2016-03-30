@@ -98,7 +98,7 @@ body {
   
   /* height: -webkit-calc(100vw / 4 * 3);
   height: calc(100vw / 4 * 3); */
-  height: 50%; /* 160329 1423 */
+  height: 30%; /* 160329 1423 */
   
   /* max-height: -webkit-calc(100vh - 56px);
   max-height: calc(100vh - 56px); */
@@ -241,7 +241,7 @@ body {
     width: 60%;
     /* height: -webkit-calc(60vw / 16 * 9);
     height: calc(60vw / 16 * 9); 160329 */
-	height: 70%;
+	height: 40%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 3px 3px 0 0;
