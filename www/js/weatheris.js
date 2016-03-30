@@ -93,7 +93,7 @@ myApp.searchLocation = function (search) {
         $$.get(q, function (results) {
             var html = '';
             results = JSON.parse(results);
-            $$('.popup .preloader').hide();
+            // $$('.popup .preloader').hide();
             if (results.query.count > 0) {
                 var places = results.query.results.place;
                 html = myApp.searchResultsTemplate(places);
