@@ -43,7 +43,8 @@
   <!-- <gap:plugin name="org.apache.cordova.vibration"/> -->
   
   
-	<gap:plugin name="nl.x-services.plugins.socialsharing" spec="4.3.8" source="pgb" />
+  <plugin name="cordova-plugin-x-socialsharing" source="npm" />
+	<!-- <gap:plugin name="nl.x-services.plugins.socialsharing" spec="4.3.8" source="pgb" /> -->
 	<!-- <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" /> -->
 	<!-- <plugin name="org.apache.cordova.camera" spec="0.3.6" source="pgb" /> -->
 	
