@@ -23,21 +23,21 @@
 	<preference name="SplashScreenDelay" value="4000" />
   
   
-  <!-- <gap:plugin name="org.apache.cordova.battery-status"/> 
-  <gap:plugin name="org.apache.cordova.camera"/>
- <gap:plugin name="org.apache.cordova.media-capture"/> 
+  <gap:plugin name="org.apache.cordova.battery-status"/>
+  <!-- <gap:plugin name="org.apache.cordova.camera"/> -->
+  <gap:plugin name="org.apache.cordova.media-capture"/>
   <gap:plugin name="org.apache.cordova.console"/>
-  <gap:plugin name="org.apache.cordova.contacts"/> -->
+  <gap:plugin name="org.apache.cordova.contacts"/>
   <gap:plugin name="org.apache.cordova.device"/>
-  <!-- <gap:plugin name="org.apache.cordova.device-motion"/>
-  <gap:plugin name="org.apache.cordova.device-orientation"/> -->
+  <gap:plugin name="org.apache.cordova.device-motion"/>
+  <gap:plugin name="org.apache.cordova.device-orientation"/>
   <gap:plugin name="org.apache.cordova.dialogs"/>
   <gap:plugin name="org.apache.cordova.file"/>
   <gap:plugin name="org.apache.cordova.file-transfer"/>
-  <!-- <gap:plugin name="org.apache.cordova.geolocation"/> -->
+  <gap:plugin name="org.apache.cordova.geolocation"/>
   <gap:plugin name="org.apache.cordova.globalization"/>
   <gap:plugin name="org.apache.cordova.inappbrowser"/>
-  <!-- <gap:plugin name="org.apache.cordova.media"/> -->
+  <gap:plugin name="org.apache.cordova.media"/>
   <gap:plugin name="org.apache.cordova.network-information"/>
   <gap:plugin name="org.apache.cordova.splashscreen"/>
   <gap:plugin name="org.apache.cordova.vibration"/>
@@ -45,7 +45,7 @@
   
 	<gap:plugin name="nl.x-services.plugins.socialsharing" spec="4.3.8" source="pgb" />
 	<plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
-	<!-- <plugin name="org.apache.cordova.camera" spec="0.3.6" source="pgb" /> -->
+	<plugin name="org.apache.cordova.camera" spec="0.3.6" source="pgb" />
 	
 	<!-- <plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" /> -->
 	<plugin name="pushwoosh-pgb-plugin" source="npm" />
